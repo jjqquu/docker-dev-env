@@ -1,0 +1,30 @@
+
+dns:
+    build: dnsmasq
+    ports:
+      - "53:5353/udp"
+    volumes:
+      - "./dnsmasq/dnsmasq.hosts:/dnsmasq.hosts"
+
+nexusdata:
+    build: nexus
+    entrypoint: /bin/bash
+           
+nexus:
+    build: nexus
+    volumes_from:
+      - nexusdata
+    ports:
+      - "8081:8081"
+
+registrydata:
+    build: registry
+    entrypoint: /bin/bash
+
+registry:
+    build: registry
+    volumes_from:
+      - registrydata
+    ports:
+      - "5000:5000"
+
