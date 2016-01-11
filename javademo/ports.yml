@@ -1,0 +1,3 @@
+memcached: 11211
+nginx: 8002
+jetty: 5001

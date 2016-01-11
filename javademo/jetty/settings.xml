@@ -1,0 +1,11 @@
+<settings>
+	<mirrors>
+		<mirror>
+ 			<id>Nexus</id>
+			<name>Nexus Public Mirror</name>
+			<url>http://172.17.0.1:8081/content/groups/public</url>
+			<mirrorOf>*</mirrorOf>
+		</mirror>
+	</mirrors>
+</settings>
+

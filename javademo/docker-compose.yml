@@ -1,0 +1,24 @@
+memcached:
+    build: memcached
+    ports:
+      - "11211:11211"
+
+nginx:
+    build: nginx
+    ports:
+      - "8002:80"
+    volumes:
+      - "./nginx/sites/:/etc/nginx/conf.d"
+      - "./nginx/certs/:/etc/nginx/certs"
+      - "./nginx/logs/:/var/log/nginx"
+      - "./nginx/www/:/var/www"
+    links:
+      - jetty
+
+jetty:
+    build: jetty
+    ports:
+      - "5001:5001"
+    links:
+      - memcached
+

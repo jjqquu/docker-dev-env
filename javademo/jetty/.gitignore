@@ -1,0 +1,13 @@
+.settings
+.classpath
+.project
+*.iml
+*~
+bin/
+build/
+cobertura.ser
+junit*
+lib/ivy*
+target/
+reports/
+.idea/
