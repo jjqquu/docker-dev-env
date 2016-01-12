@@ -2,7 +2,9 @@ package com.xiaomi.jinping;
 
 import net.spy.memcached.MemcachedClient;
 
+import java.io.FileInputStream;
 import java.net.InetSocketAddress;
+import java.util.Properties;
 
 import net.spy.memcached.internal.OperationFuture;
 import org.apache.log4j.Logger;
@@ -16,11 +18,25 @@ public class MemoryStore {
     private Logger logger = Logger.getLogger(MemoryStore.class.getName());
 
     static String host = "memcached";
-    static int port =  11211;
+    static int port =  60002;
     private volatile MemcachedClient cli = null;
 
     // private constructor
-    private MemoryStore(String host, int port) {
+    private MemoryStore() {
+        String host = MemoryStore.host;
+        int port = MemoryStore.port;
+        try {
+            Properties memProps = new Properties();
+            FileInputStream in = new FileInputStream("memcache.properties");
+            memProps.load(in);
+            in.close();
+            host = memProps.getProperty("host");
+            port = Integer.parseInt(memProps.getProperty("port"));
+        }
+        catch (Exception e) {
+            logger.warn("fail to load memcache.properties, try to use default property (host, port) = (" + host + ", " + port + ")");
+        }
+
         try {
             // Spy memcached client takes responsebility of establishing & maintaining connection to the memcached server
             // however, we need to implicitly handle failure of resolving hostname.
@@ -74,7 +90,7 @@ public class MemoryStore {
             synchronized (MemoryStore.class) {
                 // Double check
                 if (instance == null) {
-                    instance = new MemoryStore(host, port);
+                    instance = new MemoryStore();
                 }
             }
         }
