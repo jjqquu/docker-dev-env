@@ -1,10 +1,10 @@
 
-dns:
-    build: dnsmasq
-    ports:
-      - "53:5353/udp"
-    volumes:
-      - "./dnsmasq/dnsmasq.hosts:/dnsmasq.hosts"
+#dns:
+#    build: dnsmasq
+#    ports:
+#      - "53:5353/udp"
+#    volumes:
+#      - "./dnsmasq/dnsmasq.hosts:/dnsmasq.hosts"
 
 nexusdata:
     build: nexus
@@ -15,7 +15,7 @@ nexus:
     volumes_from:
       - nexusdata
     ports:
-      - "8081:8081"
+      - "60000:8081"
 
 registrydata:
     build: registry
@@ -26,5 +26,5 @@ registry:
     volumes_from:
       - registrydata
     ports:
-      - "5000:5000"
+      - "60001:5000"
 

@@ -1,3 +1,3 @@
-memcached: 11211
-nginx: 8002
-jetty: 5001
+memcached: 60002
+nginx: 60003
+jetty: 60004
