@@ -4,6 +4,7 @@ FROM centos
 RUN yum -y install \
 		g++ \
 		gcc \
+		gdb \
 		libc6-dev \
 		git \
 		make \
