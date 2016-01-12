@@ -15,7 +15,7 @@ nexus:
     volumes_from:
       - nexusdata
     ports:
-      - "60000:8081"
+      - "8081:8081"
 
 registrydata:
     build: registry
@@ -26,5 +26,5 @@ registry:
     volumes_from:
       - registrydata
     ports:
-      - "60001:5000"
+      - "8082:5000"
 

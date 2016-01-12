@@ -1,12 +1,8 @@
 memcached:
     build: memcached
-    ports:
-      - "60002:11211"
 
 nginx:
     build: nginx
-    ports:
-      - "60003:80"
     volumes:
       - "./nginx/sites/:/etc/nginx/conf.d"
       - "./nginx/certs/:/etc/nginx/certs"
@@ -17,8 +13,6 @@ nginx:
 
 jetty:
     build: jetty
-    ports:
-      - "60004:5001"
     links:
       - memcached
 

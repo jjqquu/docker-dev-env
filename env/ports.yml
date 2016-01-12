@@ -1,2 +1,2 @@
-nexus: 60000
-registry: 60001
+nexus: 8081
+registry: 8082
