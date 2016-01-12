@@ -22,7 +22,7 @@ import org.kohsuke.args4j.Option;
 class MyArgument
 {
     @Option(name = "-p", usage = "port to which the jetty embed http server listens", metaVar="INT")
-    public int port = 30;
+    public int port = 5001;
 
     // receives other command line parameters than options
     // @Argument

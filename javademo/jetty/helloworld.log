@@ -1,0 +1,29 @@
+2016-01-12 19:01:00 INFO  HelloWorld:78 - HelloWorld started
+2016-01-12 19:01:23 DEBUG PeopleResource:31 - get people qjp
+2016-01-12 19:01:23 WARN  MemoryStore:37 - fail to load memcache.properties, try to use default property (host, port) = (memcached, 11211)
+2016-01-12 19:01:23 ERROR MemoryStore:48 - Failed to resolve hostname of memcached(memcached:11211). Catch exception: 
+ [Ljava.lang.StackTraceElement;@5aabaeea
+2016-01-12 19:01:23 ERROR MemoryStore:72 - Failed to get people of qjp
+2016-01-12 19:01:55 INFO  HelloWorld:78 - HelloWorld started
+2016-01-12 19:01:59 DEBUG PeopleResource:31 - get people qjp
+2016-01-12 19:02:35 WARN  MemoryStore:37 - fail to load memcache.properties, try to use default property (host, port) = (memcached, 11211)
+2016-01-12 19:02:35 ERROR MemoryStore:48 - Failed to resolve hostname of memcached(memcached:11211). Catch exception: 
+ [Ljava.lang.StackTraceElement;@21387eef
+2016-01-12 19:02:35 ERROR MemoryStore:72 - Failed to get people of qjp
+2016-01-12 19:08:30 INFO  HelloWorld:78 - HelloWorld started
+2016-01-12 19:08:36 DEBUG PeopleResource:31 - get people qjp
+2016-01-12 19:09:18 WARN  MemoryStore:37 - fail to load memcache.properties, try to use default property (host, port) = (memcached, 11211)
+2016-01-12 19:09:18 ERROR MemoryStore:48 - Failed to resolve hostname of memcached(memcached:11211). Catch exception: 
+ [Ljava.lang.StackTraceElement;@2287580c
+2016-01-12 19:09:18 ERROR MemoryStore:72 - Failed to get people of qjp
+2016-01-12 19:09:22 INFO  HelloWorld:78 - HelloWorld started
+2016-01-12 19:09:24 DEBUG PeopleResource:31 - get people qjp
+2016-01-12 19:10:08 WARN  MemoryStore:37 - fail to load memcache.properties, try to use default property (host, port) = (memcached, 11211)
+2016-01-12 19:10:08 ERROR MemoryStore:48 - Failed to resolve hostname of memcached(memcached:11211). Catch exception: 
+ [Ljava.lang.StackTraceElement;@3bd0d54
+2016-01-12 19:10:08 ERROR MemoryStore:72 - Failed to get people of qjp
+2016-01-12 19:11:49 INFO  HelloWorld:78 - HelloWorld started
+2016-01-12 19:11:57 DEBUG PeopleResource:31 - get people qjp
+2016-01-12 19:12:24 ERROR MemoryStore:48 - Failed to resolve hostname of memcached(memcached:11211). Catch exception: 
+ [Ljava.lang.StackTraceElement;@fb7934a
+2016-01-12 19:12:24 ERROR MemoryStore:72 - Failed to get people of qjp

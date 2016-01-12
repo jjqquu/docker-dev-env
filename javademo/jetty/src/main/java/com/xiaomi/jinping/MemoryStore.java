@@ -2,7 +2,7 @@ package com.xiaomi.jinping;
 
 import net.spy.memcached.MemcachedClient;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.util.Properties;
 
@@ -18,7 +18,7 @@ public class MemoryStore {
     private Logger logger = Logger.getLogger(MemoryStore.class.getName());
 
     static String host = "memcached";
-    static int port =  60002;
+    static int port =  11211;
     private volatile MemcachedClient cli = null;
 
     // private constructor
@@ -27,7 +27,7 @@ public class MemoryStore {
         int port = MemoryStore.port;
         try {
             Properties memProps = new Properties();
-            FileInputStream in = new FileInputStream("memcache.properties");
+            InputStream in = getClass().getResourceAsStream("/memcache.properties");
             memProps.load(in);
             in.close();
             host = memProps.getProperty("host");
