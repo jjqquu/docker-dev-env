@@ -8,7 +8,7 @@ MAINTAINER qujinping
 RUN groupadd -r memcache && useradd -r -g memcache memcache
 
 RUN yum -y install gcc libc6-dev make perl \
-        && wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz -O libevent.tar.gz \
+        && wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 http://downloads.sourceforge.net/levent/libevent-2.0.22-stable.tar.gz -O libevent.tar.gz \
 	&& mkdir -p /usr/src/libevent \
 	&& tar -xzf libevent.tar.gz -C /usr/src/libevent --strip-components=1 \
 	&& rm libevent.tar.gz \
