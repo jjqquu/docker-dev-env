@@ -15,4 +15,5 @@ jetty:
     build: jetty
     links:
       - memcached
-
+    ports:
+      - "62911:62911"

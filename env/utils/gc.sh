@@ -95,7 +95,7 @@ function RM_CONTAINER {
 if [[ $CONTS_TO_BE_DEL"" != "" ]]; then
 	docker ps -a
         echo -e "Container: ${BOLD}$CONTS_TO_BE_DEL ${NORM} will be ${BOLD}removed${NORM}"\\n
-        read -p "Are you sure? " -n 1 -r
+        read -p "Are you sure? [n/Y]" -n 1 -r
         echo    # (optional) move to a new line
         if [[ $REPLY =~ ^[Yy]$ ]]; then
                 docker rm -f -v ${CONTS_TO_BE_DEL}
