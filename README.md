@@ -231,6 +231,7 @@ dockerfile编写的几篇重要文档:
 - [使用参考手册](https://docs.docker.com/engine/reference/builder/)   
 - [最佳实践总结](https://docs.docker.com/engine/articles/dockerfile_best-practices/)
 - [容器data volume的管理](https://docs.docker.com/engine/userguide/dockervolumes/)
+- [项目atomic的dockerimage编写指南] (http://www.projectatomic.io/docs/docker-image-author-guidance/)
 
 ### 本demo所编写的docker image的层次
  
