@@ -1,6 +1,3 @@
-# Forked from jplock/docker-zookeeper
-#
-
 FROM jdk
 
 RUN wget --no-check-certificate -O /tmp/zookeeper-3.4.6.tar.gz.sha1 https://www.us.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz.sha1 && \
