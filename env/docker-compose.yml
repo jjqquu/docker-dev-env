@@ -12,6 +12,8 @@ nexusdata:
            
 nexus:
     build: nexus
+    volumes:
+      - "./nexus/nexus.conf:/sonatype-work/conf/nexus.conf"
     volumes_from:
       - nexusdata
     ports:

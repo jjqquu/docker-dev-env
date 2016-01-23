@@ -1,0 +1,4 @@
+[repositories]
+  local
+  my-ivy-proxy-releases: http://172.17.0.1:8081/content/groups/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+  my-maven-proxy-releases: http://172.17.0.1:8081/content/groups/public/

@@ -26,3 +26,7 @@ cd $WORKDIR
 cd golang-onbuild
 docker build --rm -t golang-onbuild .
 cd $WORKDIR
+
+cd zk
+docker build --rm -t zk .
+cd $WORKDIR

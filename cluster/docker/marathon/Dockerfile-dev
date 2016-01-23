@@ -1,0 +1,36 @@
+#
+# This is the docker image used for ./bin/run-tests.sh and development tasks.
+#
+# It will NOT reresolve all dependencies on every change (as opposed to Dockerfile)
+# but it ultimately results in a larger docker image.
+#
+FROM mesos
+
+# Install sbt manually
+COPY ./project/build.properties /marathon/project/build.properties
+RUN eval $(sed s/sbt.version/SBT_VERSION/ </marathon/project/build.properties) && \
+    mkdir -p /usr/local/bin && \
+    wget -P /usr/local/bin/ https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/$SBT_VERSION/sbt-launch.jar
+COPY project/sbt /usr/local/bin/
+RUN chmod +x /usr/local/bin/sbt
+
+WORKDIR /marathon
+
+# The build configuration including dependencies changes
+# less frequently than the source code. By separating
+# these steps we can greatly speed up cached local docker builds.
+
+ADD repositories /root/.sbt/repositories
+
+COPY project /marathon/project
+# even without sources this will resolve all dependencies and compile the scala compiler interfaces
+RUN sbt -Dsbt.override.build.repos=true compile
+
+COPY . /marathon
+
+RUN sbt -Dsbt.override.build.repos=true -Dsbt.log.format=false assembly && \
+        mv $(find target -name 'marathon-assembly-*.jar' | sort | tail -1) ./ && \
+        rm -rf target/* && \
+        mv marathon-assembly-*.jar target
+
+ENTRYPOINT ["./bin/start"]

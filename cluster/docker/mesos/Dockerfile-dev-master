@@ -1,0 +1,46 @@
+#
+# Dockerfile for building Mesos from source
+#
+# Create snapshot builds with:
+# docker build -t mesos/mesos:git-`git rev-parse --short HEAD` .
+#
+# Run master/slave with:
+# docker run mesos/mesos:git-`git rev-parse --short HEAD` mesos-master [options]
+# docker run mesos/mesos:git-`git rev-parse --short HEAD` mesos-slave [options]
+#
+
+
+FROM mvn
+MAINTAINER Qu Jinping<qujinping@xiaomi.com>
+
+# build packages
+
+# the build steps, refer to http://mesos.apache.org/gettingstarted/
+ADD wandisco-svn.repo /etc/yum.repos.d/wandisco-svn.repo
+RUN wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo \
+	&& yum install -y epel-release \
+	&& yum update systemd \
+	&& yum -y install git \
+	&& yum groupinstall -y "Development Tools" \
+	&& yum install -y python-devel zlib-devel libcurl-devel openssl-devel cyrus-sasl-devel cyrus-sasl-md5 apr-devel subversion-devel apr-util-devel \
+	&& yum clean all
+
+# include libmesos on library path
+ENV LD_LIBRARY_PATH /usr/local/lib
+
+COPY ./settings.xml /root/.m2/settings.xml
+
+# copy local checkout into /opt
+ADD . /opt/mesos
+
+WORKDIR /opt/mesos
+
+
+# configure and build
+RUN ./bootstrap \
+	&& mkdir build \
+	&& cd build && ../configure \
+	&& make -j4 install
+
+CMD ["--registry=in_memory"]
+ENTRYPOINT ["mesos-master"]

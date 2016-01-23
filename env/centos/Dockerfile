@@ -16,7 +16,7 @@ ENV TERM=xterm
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # install utils 
-RUN yum -y install unzip net-tools telnet lsof ntop tcpdump traceroute bind-utils openssh-server openssh-clients wget && yum clean all
+RUN yum -y install unzip net-tools telnet lsof ntop tcpdump traceroute bind-utils openssh-server openssh-clients wget which && yum clean all
 
 # For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous

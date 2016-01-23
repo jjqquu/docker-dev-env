@@ -85,7 +85,10 @@ env是一个docker compose 项目（project），它用于定义，构建和启�
 - **docker registry**，用作private registry，目前主要是作image pull through cache  
 - **dns**，一个本地的dnsmasq服务，方便添加域名帮助集成。目前没有用到
 	配置文件是`env/dnsmasq/dnsmasq.hosts`  
-- **nexus**，用作maven pull through cache，避免mvn build时“download the internet”的问题。具体设置参考“docker-dev-env/javademo/jetty”, 在mvn调用时使用setting.xml指定nexus作为mirror。
+- **nexus**，用作maven/sbt pull through cache，避免build时“download the internet”的问题([问题详细解释和解决方法](http://blog.flurdy.com/2014/11/dont-download-internet-share-maven-ivy-docker.html))。  
+	对maven proxy的设置参考“docker-dev-env/javademo/jetty”, 在mvn调用时使用setting.xml指定nexus作为mirror。  
+	对sbt proxy的设置，参见[sbt proxy官方文档](http://www.scala-sbt.org/0.13/docs/Proxy-Repositories.html)。  
+	使用proxy的方式解决maven/sbt build时“download the internet”的问题，要优雅于使用bind mount volumn的方式，因为proxy在build时也适用。
 
  ```
   $ cd ~/git/docker-dev-env/env
