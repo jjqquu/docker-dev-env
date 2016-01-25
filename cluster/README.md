@@ -12,8 +12,13 @@ screwed cluster state or something.
 ## Versions
 
 * Mesos 0.26.0
-* Marathon 0.14.0-RC1
+* Marathon 0.14.0
 * Chronos 2.4.0 (optional)
+
+## known issue
+mesos 从0.26.0开始对linux launcher使用systemd，而在docker容器上不支持systemd, 所以工作会不正常。
+
+目前，我们是通过"--launcher=posix"绕过这个问题。
 
 ## Usage
 

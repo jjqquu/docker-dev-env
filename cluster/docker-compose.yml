@@ -7,6 +7,8 @@ zk:
 master:
   build: mesos
   dockerfile: Dockerfile-dev-master
+  ports:
+    - "5050:5050"
   environment:
     MESOS_ZK: zk://zk:2181/mesos
     MESOS_QUORUM: 1
@@ -19,6 +21,8 @@ slave1:
   build: mesos
   dockerfile: Dockerfile-dev-slave
   privileged: true
+  ports:
+    - "5051:5051"
   environment:
     MESOS_MASTER: zk://zk:2181/mesos
     MESOS_CONTAINERIZERS: docker,mesos
@@ -30,6 +34,7 @@ slave1:
     - /var/run/docker.sock:/var/run/docker.sock
   links:
     - zk
+  command: "--launcher=posix"
 
 # slave2:
 #   image: mesosphere/mesos-slave:0.26.0-0.2.145.ubuntu1404
@@ -50,11 +55,15 @@ slave1:
 marathon:
   build: marathon
   dockerfile: Dockerfile-dev
+  ports:
+    - "8080:8080"
   environment:
-    MARATHON_MASTER: zk://zk:2181/mesos
     MARATHON_DECLINE_OFFER_DURATION: 3600000
   links:
     - zk
+  command: "--master zk://zk:2181/mesos --zk zk://zk:2181/marathon"
+
+                                      #
 
 #chronos:
 #  image: mesosphere/chronos:chronos-2.4.0-0.1.20151007110204.ubuntu1404-mesos-0.24.1-0.2.35.ubuntu1404

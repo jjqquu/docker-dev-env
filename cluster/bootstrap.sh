@@ -26,7 +26,7 @@ cd ..
 wget -c https://github.com/mesosphere/marathon/archive/v${MARATHON_VERSION}.zip
 unzip v${MARATHON_VERSION}.zip
 mv marathon-${MARATHON_VERSION}/ marathon/
-#rm -f v${MARATHON_VERSION}.zip
+rm -f v${MARATHON_VERSION}.zip
 SETUP_MARATHON_BUILD
 cd $WORKDIR
 
@@ -36,5 +36,5 @@ unzip ${MESOS_VERSION}.zip
 mv mesos-${MESOS_VERSION}/ mesos/
 SETUP_MESOS_BUILD
 BUILD_MESOS_IMAGE
-#rm -f ${MESOS_VERSION}.zip
+rm -f ${MESOS_VERSION}.zip
 cd $WORKDIR

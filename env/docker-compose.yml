@@ -12,10 +12,10 @@ nexusdata:
            
 nexus:
     build: nexus
-    volumes:
-      - "./nexus/nexus.conf:/sonatype-work/conf/nexus.conf"
     volumes_from:
       - nexusdata
+#    volumes:
+#      - "./nexus/sonatype-work:/sonatype-work"
     ports:
       - "8081:8081"
 
