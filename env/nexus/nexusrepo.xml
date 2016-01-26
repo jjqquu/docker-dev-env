@@ -455,6 +455,55 @@
         <autoBlockActive>true</autoBlockActive>
       </externalConfiguration>
     </repository>
+    <repository>
+      <id>npm-proxy</id>
+      <name>npm proxy</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.Repository</providerRole>
+      <providerHint>npm-proxy</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheActive>true</notFoundCacheActive>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>READ_ONLY</writePolicy>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <remoteStorage>
+        <url>https://registry.npmjs.org</url>
+      </remoteStorage>
+      <externalConfiguration>
+        <repositoryPolicy>MIXED</repositoryPolicy>
+        <fileTypeValidation>true</fileTypeValidation>
+        <downloadRemoteIndex>false</downloadRemoteIndex>
+        <artifactMaxAge>-1</artifactMaxAge>
+        <metadataMaxAge>1440</metadataMaxAge>
+        <itemMaxAge>1440</itemMaxAge>
+        <autoBlockActive>true</autoBlockActive>
+      </externalConfiguration>
+    </repository>
+    <repository>
+      <id>npm</id>
+      <name>npm</name>
+      <providerRole>org.sonatype.nexus.proxy.repository.GroupRepository</providerRole>
+      <providerHint>npm-group</providerHint>
+      <localStatus>IN_SERVICE</localStatus>
+      <notFoundCacheTTL>1440</notFoundCacheTTL>
+      <userManaged>true</userManaged>
+      <exposed>true</exposed>
+      <browseable>true</browseable>
+      <writePolicy>READ_ONLY</writePolicy>
+      <searchable>true</searchable>
+      <localStorage>
+        <provider>file</provider>
+      </localStorage>
+      <externalConfiguration>
+        <memberRepositories>
+          <memberRepository>npm-proxy</memberRepository>
+        </memberRepositories>
+      </externalConfiguration>
+    </repository>
   </repositories>
   <repositoryGrouping>
     <pathMappings>
@@ -560,7 +609,7 @@
     <hostname>smtp-host</hostname>
     <port>25</port>
     <username>smtp-username</username>
-    <password>{PKJlzVHGwEQHUfK6veUtucPO8yOdyzthUt6aYoTwZTY=}</password>
+    <password>{iZ2S8nz+NocHvvwkSwdScCP/lJU2P0Y71RWxxwtffKw=}</password>
     <systemEmailAddress>system@nexus.org</systemEmailAddress>
   </smtpConfiguration>
   <notification />

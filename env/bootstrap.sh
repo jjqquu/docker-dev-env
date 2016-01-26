@@ -30,3 +30,13 @@ cd $WORKDIR
 cd zk
 docker build --rm -t zk .
 cd $WORKDIR
+
+cd nodejs
+docker build --rm -t nodejs .
+cd $WORKDIR
+
+git clone https://github.com/kwk/docker-registry-frontend.git registryfe
+cp docker/registryfe/Dockerfile registryfe/
+
+
+

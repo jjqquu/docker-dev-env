@@ -1,0 +1,2 @@
+# add the URL of the repository
+registry = http://172.17.0.1:8081/content/groups/npm/

@@ -14,8 +14,6 @@ nexus:
     build: nexus
     volumes_from:
       - nexusdata
-#    volumes:
-#      - "./nexus/sonatype-work:/sonatype-work"
     ports:
       - "8081:8081"
 
@@ -30,3 +28,15 @@ registry:
     ports:
       - "8082:5000"
 
+registryfe:
+    build: registryfe 
+    links:
+      - registry:path-to-your-registry-v2
+    ports:
+      # Serves the page via grunt
+      - "9000:9000"
+      # For live reload with grunt
+      - "35729:35729"
+    volumes:
+      - ./registryfe:/source:rw
+      - ./registryfe/develop/start-develop.sh:/root/start-develop.sh:ro
